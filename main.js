@@ -2,8 +2,12 @@ const tasksSectionButton = document.querySelector('.tasks__section__button');
 const tasksList = document.querySelector('.tasks__list');
 
 const modal = document.querySelector('.modal');
+const modalForm = document.querySelector('.modal__form');
 const modalOverlay = document.querySelector('.modal__overlay');
 const modalCloseButton= document.querySelector('.modal__close-icon');
+
+const titleField = document.getElementById('title');
+const descriptionField = document.getElementById('description');
 
 async function getTasks() {
   await fetch('http://localhost:3000/tasks')
@@ -34,6 +38,26 @@ function createTask(tasks) {
   }
 }
 
+async function addTask() {
+  event.preventDefault();
+  
+  let task = {
+    title: titleField.value,
+    description: descriptionField.value
+  };
+
+  await fetch('http://localhost:3000/tasks', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(task)
+  })
+
+  getTasks();
+  closeModal();
+}
+
 function openModal() {
   modalOverlay.classList.add('active');
   modal.classList.add('active');
@@ -47,5 +71,6 @@ function closeModal() {
 tasksSectionButton.addEventListener('click', () => openModal());
 modalCloseButton.addEventListener('click', () => closeModal());
 modalOverlay.addEventListener('click', () => closeModal());
+modalForm.addEventListener('submit', () => addTask());
 
 getTasks();
