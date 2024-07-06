@@ -6,6 +6,7 @@ const modalForm = document.querySelector('.modal__form');
 const modalOverlay = document.querySelector('.modal__overlay');
 const modalCloseButton= document.querySelector('.modal__close-icon');
 
+const searchField = document.getElementById('search');
 const titleField = document.getElementById('title');
 const descriptionField = document.getElementById('description');
 
@@ -59,6 +60,7 @@ async function addTask() {
 
   await getTasks();
   closeModal();
+  modalForm.reset();
 }
 
 async function deleteTask(id) {
@@ -69,6 +71,22 @@ async function deleteTask(id) {
   await getTasks();
 }
 
+function searchTaskByTitle() {
+  let tasks = document.querySelectorAll('.task');
+
+  if(searchField.value.length > 0) {
+    tasks.forEach(task => {
+      if(!task.children[0].innerText.includes(searchField.value)) {
+        task.classList.add('hidden');
+      } else {
+        task.classList.remove('hidden');
+      }
+    });
+  } else {
+    tasks.forEach(task => task.classList.remove('hidden'));
+  }
+}
+searchTaskByTitle();
 function openModal() {
   modalOverlay.classList.add('active');
   modal.classList.add('active');
