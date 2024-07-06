@@ -24,7 +24,10 @@ function createTask(tasks) {
         <li class="task">
           <h5 class="task__title">${task.title}</h5>
           <p class="task__description">${task.description}</p>
-          <i class='task__delete-icon bx bx-trash'></i>
+          <i 
+            class='task__delete-icon bx bx-trash'
+            onclick="deleteTask('${task.id}')"
+          ></i>
         </li>
       `;
     });
@@ -54,8 +57,16 @@ async function addTask() {
     body: JSON.stringify(task)
   })
 
-  getTasks();
+  await getTasks();
   closeModal();
+}
+
+async function deleteTask(id) {
+  await fetch(`http://localhost:3000/tasks/${id}`, {
+    method: 'DELETE'
+  });
+
+  await getTasks();
 }
 
 function openModal() {
