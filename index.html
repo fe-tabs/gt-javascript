@@ -5,15 +5,66 @@
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-  <title>Page Title</title>
+  
+  <!-- ICONS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src='main.js' defer></script>
+
+  <title>Lista de Tarefas</title>
 </head>
 
 <body>
+  <header class="header">
+    <input
+      class="header__input"
+      type="text"
+      id="search"
+      name="search"
+      placeholder="Pesquisar por título"
+    >
+  </header>
 
+  <main class="main">
+    <section class="tasks__section">
+      <h2 class="tasks__section__title">
+        Tarefas
+        <button class="tasks__section__button">Nova Tarefa</button>
+      </h2>
+
+      <ul class="tasks__list"></ul>
+    </section>
+
+    <div class="modal__overlay"></div>
+    <div class="modal">
+      <form class="modal__form">
+        <h3 class="modal__form__title">
+          Criar Tarefa 
+          <i class='modal__close-icon bx bx-x'></i>
+        </h3>
+
+        <label class="modal__form__label" for="title">Título</label>
+        <input
+          class="modal__form__input"
+          type="text"
+          name="title"
+          id="title" 
+          required
+        >
+        
+        <label class="modal__form__label" for="description">Descrição</label>
+        <textarea
+          class="modal__form__textarea"
+          id="description"
+          required
+        ></textarea>
+
+        <button class="modal__form__button">Criar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src='main.js' defer></script>
 </body>
 
 </html>

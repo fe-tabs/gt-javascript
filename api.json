@@ -1,0 +1,24 @@
+{
+  "tasks": [
+      {
+          "id": "A1B2",
+          "title": "Estudar JavaScript",
+          "description": "Revisar conceitos básicos e avançados de JavaScript, incluindo ES6 e além."
+      },
+      {
+          "id": "C3D4",
+          "title": "Implementar API REST",
+          "description": "Desenvolver uma API RESTful utilizando Node.js e Express para o projeto de gestão de tarefas."
+      },
+      {
+          "id": "E5F6",
+          "title": "Criar layout responsivo",
+          "description": "Desenvolver um layout responsivo utilizando Flexbox e CSS Grid para o site do portfólio."
+      },
+      {
+          "id": "I9J0",
+          "title": "Aprender React",
+          "description": "Estudar os fundamentos do React e criar um projeto simples para prática."
+      }
+  ]
+}
